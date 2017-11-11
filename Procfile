@@ -1,0 +1,1 @@
+web: sh -xv distribution/proxy-server-0.1/bin/startup.sh
