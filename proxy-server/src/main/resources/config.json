@@ -4,7 +4,7 @@
 		"clientKey": "adeab7c22e024f8685542710039189f3",
 		"proxyMappings": [
 			{
-				"inetPort": 80,
+				"inetPort": 8081,
 				"lan": "192.168.1.184:5000",
 				"name": "DSM"
 			}
