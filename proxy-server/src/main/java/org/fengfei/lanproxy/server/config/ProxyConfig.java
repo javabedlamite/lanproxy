@@ -88,7 +88,8 @@ public class ProxyConfig implements Serializable {
         this.serverBind = Config.getInstance().getStringValue("server.bind", "0.0.0.0");
 
         // 配置服务器主机和端口配置初始化
-        this.configServerPort = Config.getInstance().getIntValue("config.server.port");
+        Integer port = System.getenv("PORT")!=null?Integer.parseInt(System.getenv("PORT")):null;
+        this.configServerPort = port!=null?port:Config.getInstance().getIntValue("config.server.port");
         this.configServerBind = Config.getInstance().getStringValue("config.server.bind", "0.0.0.0");
 
         // 配置服务器管理员登录认证信息
