@@ -85,14 +85,16 @@ public class ProxyConfig implements Serializable {
 
         // 代理服务器主机和端口配置初始化
     	
+    	logger.error("SERVER_PORT_ZW:{},PORT_ZW:{}",System.getenv().get("SERVER_PORT"),System.getenv().get("PORT"));
+    	
     	Integer serverport = System.getenv().get("SERVER_PORT")!=null?Integer.parseInt(System.getenv("SERVER_PORT")):Config.getInstance().getIntValue("server.port");
-    	logger.error("serverport:"+serverport);
+    	logger.error("serverport_zw:{}",serverport);
     	this.serverPort = serverport;
         this.serverBind = Config.getInstance().getStringValue("server.bind", "0.0.0.0");
 
         // 配置服务器主机和端口配置初始化
         Integer configserverport = System.getenv().get("PORT")!=null?Integer.parseInt(System.getenv("PORT")):Config.getInstance().getIntValue("config.server.port");
-        logger.error("configserverport:"+configserverport);
+        logger.error("configserverport_zw:{}",configserverport);
         this.configServerPort = configserverport;
         this.configServerBind = Config.getInstance().getStringValue("config.server.bind", "0.0.0.0");
 
