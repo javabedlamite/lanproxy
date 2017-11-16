@@ -39,13 +39,13 @@ public class ProxyConfig implements Serializable {
     static {
 
         // 代理配置信息存放在用户根目录下
-        String dataPath =  "/app/";
+        /*String dataPath =  ".";
         File file = new File(dataPath);
         if (!file.isDirectory()) {
             file.mkdir();
-        }
-
-        CONFIG_FILE = dataPath + "/config.json";
+        }*/
+        
+        CONFIG_FILE = "./config.json";
     }
 
     /** 代理服务器绑定主机host */
