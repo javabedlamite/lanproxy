@@ -6,7 +6,10 @@ import java.util.concurrent.atomic.AtomicLong;
 import org.fengfei.lanproxy.protocol.ProxyMessage;
 import org.fengfei.lanproxy.server.Constants;
 import org.fengfei.lanproxy.server.ProxyChannelManager;
+import org.fengfei.lanproxy.server.ProxyServerContainer;
 import org.fengfei.lanproxy.server.config.ProxyConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
@@ -19,6 +22,8 @@ import io.netty.channel.SimpleChannelInboundHandler;
  */
 public class UserChannelHandler extends SimpleChannelInboundHandler<ByteBuf> {
 
+	private static Logger logger = LoggerFactory.getLogger(UserChannelHandler.class);
+	
     private static AtomicLong userIdProducer = new AtomicLong(0);
 
     @Override
@@ -47,7 +52,9 @@ public class UserChannelHandler extends SimpleChannelInboundHandler<ByteBuf> {
             proxyMessage.setUri(userId);
             proxyMessage.setData(bytes);
             proxyChannel.writeAndFlush(proxyMessage);
+            logger.info("消息：",proxyMessage.toString());
         }
+        
     }
 
     @Override
@@ -71,6 +78,7 @@ public class UserChannelHandler extends SimpleChannelInboundHandler<ByteBuf> {
             proxyMessage.setUri(userId);
             proxyMessage.setData(lanInfo.getBytes());
             cmdChannel.writeAndFlush(proxyMessage);
+            logger.info("消息：",proxyMessage.toString());
         }
 
         super.channelActive(ctx);
